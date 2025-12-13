@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from './shopping-list.service';
-import {Subscription} from 'rxjs';
+import {Subject, Subscription, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,17 +10,18 @@ import {Subscription} from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit , OnDestroy {
   private shoppingListService = inject(ShoppingListService);
+  private destroy$ = new Subject<void>();
+  ingredients: Ingredient[] =[];
 
-  ingredients: Ingredient[];
-  private subscription: Subscription;
   ngOnInit() {
     this.ingredients = this.shoppingListService.getIngridents();
-    this.subscription = this.shoppingListService.ingredientsChanged.subscribe(
+   this.shoppingListService.ingredientsChanged.pipe(takeUntil(this.destroy$)).subscribe(
       (ingridents: Ingredient[]) => {
         this.ingredients = ingridents; });
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
   }
   onEditItem(index: number) {
     this.shoppingListService.startedEditing.next(index);
