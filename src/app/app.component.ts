@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { HeaderComponent } from './header/header.component';
-import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }*/
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: "AIzaSyB4ZBsSWGFZGpkmT9MOUT8kVRZdSTEc7Hg",
-    authDomain: "recipebook-b6a08.firebaseapp.com"
+      apiKey: "AIzaSyA-M0c5Ad-hsQ96IWRiLFNVgCabBFhG_RI",
+      authDomain: "recipebook-b6a08.firebaseapp.com"
     });
   }
 }
