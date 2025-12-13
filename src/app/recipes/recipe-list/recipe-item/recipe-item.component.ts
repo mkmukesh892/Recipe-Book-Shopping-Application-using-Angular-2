@@ -1,19 +1,19 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-import {Recipe} from '../../recipe.model';
-import {RecipeService} from '../../recipe.service';
+import { Component, Input, inject } from '@angular/core';
+import { Recipe } from '../../recipe.model';
+import { RecipeService } from '../../recipe.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
   templateUrl: './recipe-item.component.html',
-  styleUrls: ['./recipe-item.component.css']
+  styleUrls: ['./recipe-item.component.css'],
+  imports: [RouterLink]
 })
-export class RecipeItemComponent implements OnInit {
-  private recipeService = inject(RecipeService);
+export class RecipeItemComponent  {
+  readonly recipeService = inject(RecipeService);
 
   @Input() recipe: Recipe;
   @Input() index: number;
-  ngOnInit() {
-  }
   /*onRecipeSelected() {
     this.recipeService.recipeSelected.emit(this.recipe);
   }*/

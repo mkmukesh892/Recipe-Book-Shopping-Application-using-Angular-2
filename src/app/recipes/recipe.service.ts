@@ -1,17 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import {Recipe} from './recipe.model';
-import {Ingredient} from '../shared/ingredient.model';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import { Subject, throwError } from 'rxjs';
-import {Http, Response} from '@angular/http';
-import {map, catchError} from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Recipe } from './recipe.model';
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
   private shoppingListService = inject(ShoppingListService);
-  private http = inject(Http);
+  private http = inject(HttpClient);
   private authService = inject(AuthService);
 
   recipeChanged = new Subject<Recipe[]>();
@@ -82,9 +82,9 @@ export class RecipeService {
   }
   fetchRecipes() {
     const token = this.authService.getToken();
-    this.http.get('https://recipebook-b6a08.firebaseio.com/data.json?auth=' +token).pipe(map(
-    (response: Response) => {
-      const recipes: Recipe[] = response.json();
+    this.http.get<Recipe[]>('https://recipebook-b6a08.firebaseio.com/data.json?auth=' +token).pipe(map(
+    (response: Recipe[]) => {
+      const recipes: Recipe[] = response;
       for(const recipe of recipes) {
         // console.log(recipe);
         if (!recipe['ingredients']) {

@@ -1,12 +1,14 @@
-import { Component, OnChanges, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from './shopping-list.service';
-import {Subject, Subscription, takeUntil} from 'rxjs';
+import {Subject, takeUntil} from 'rxjs';
+import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.css'],
+  imports: [ShoppingEditComponent]
 })
 export class ShoppingListComponent implements OnInit , OnDestroy {
   private shoppingListService = inject(ShoppingListService);

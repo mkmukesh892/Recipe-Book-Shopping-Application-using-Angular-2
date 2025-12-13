@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { Injectable, inject } from '@angular/core';
 @Injectable({

@@ -1,14 +1,15 @@
 import { Component, OnInit, OnDestroy, ViewChild, inject } from '@angular/core';
 import {Ingredient} from '../../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list.service';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { RecipeService } from '../../recipes/recipe.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  styleUrls: ['./shopping-edit.component.css'],
+  imports: [FormsModule]
 })
 export class ShoppingEditComponent implements OnInit , OnDestroy {
   private shoppingListService = inject(ShoppingListService);
