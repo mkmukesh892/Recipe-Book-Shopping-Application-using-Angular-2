@@ -6,17 +6,13 @@ import { CommonModule } from "../../../node_modules/@angular/common";
 
 
 @NgModule({
-    declarations: [
+    imports: [
+        CommonModule,
+        FormsModule,
         ShoppingEditComponent,
         ShoppingListComponent
     ],
-    imports: [
-        CommonModule,
-        FormsModule
-    ],
-    exports: [
-        
-    ]
+    exports: []
 })
 export class ShoppingListModule {
 

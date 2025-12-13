@@ -4,13 +4,11 @@ import { SignupComponent } from "./signup/signup.component";
 import { FormsModule } from "@angular/forms";
 import { AuthRoutingModule } from "./auth-routing-module";
 @NgModule({
-    declarations: [
+    imports: [
+        FormsModule,
+        AuthRoutingModule,
         SigninComponent,
         SignupComponent
-    ],
-    imports: [
-    FormsModule,
-    AuthRoutingModule
     ],
     exports: []
 })
