@@ -1,12 +1,13 @@
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    private router = inject(Router);
+
     token: string;
-    constructor(private router: Router) {}
     signupUser(email: string, password: string ) {
         firebase.auth().createUserWithEmailAndPassword(email,password).catch(
             error => console.log(error)

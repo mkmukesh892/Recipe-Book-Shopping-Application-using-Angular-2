@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-recipes',
@@ -6,7 +6,8 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+  private authService = inject(AuthService);
+
   ngOnInit() {
   }
 

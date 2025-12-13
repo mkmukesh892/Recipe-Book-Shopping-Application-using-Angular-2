@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
@@ -12,14 +12,15 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private recipeService = inject(RecipeService);
+  private shoppingListService = inject(ShoppingListService);
+  private router = inject(Router);
+  private authService = inject(AuthService);
+
   id: number;
   editMode = false;
   editForm: FormGroup;
-  constructor(private route: ActivatedRoute, 
-    private recipeService: RecipeService, 
-    private shoppingListService: ShoppingListService,
-  private router: Router,
-  private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe(

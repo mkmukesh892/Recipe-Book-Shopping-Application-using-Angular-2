@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
@@ -10,6 +10,10 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'root'
 })
 export class RecipeService {
+  private shoppingListService = inject(ShoppingListService);
+  private http = inject(Http);
+  private authService = inject(AuthService);
+
   recipeChanged = new Subject<Recipe[]>();
   ingridentsChanged = new Subject<Ingredient[]>();
   // private recipes = [new Recipe(
@@ -33,9 +37,6 @@ export class RecipeService {
   //      new Ingredient('lime', 8)]),
   //];
   private recipes = [];
-  constructor(private shoppingListService: ShoppingListService,
-     private http: Http,
-    private authService: AuthService) { }
   getRecipes() {
     return this.recipes.slice();
   }

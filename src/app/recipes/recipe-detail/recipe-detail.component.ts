@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
@@ -12,13 +12,14 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
+  private recipeService = inject(RecipeService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private shoppingListService = inject(ShoppingListService);
+  private authService = inject(AuthService);
+
   recipe: Recipe;
   id: number;
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private shoppingListService: ShoppingListService,
-              private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {

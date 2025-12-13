@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild,} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, inject } from '@angular/core';
 import {Ingredient} from '../../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list.service';
 import { NgForm } from '@angular/forms';
@@ -11,13 +11,14 @@ import { RecipeService } from '../../recipes/recipe.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit , OnDestroy {
+  private shoppingListService = inject(ShoppingListService);
+  private recipeService = inject(RecipeService);
+
   @ViewChild('f') slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
-  constructor(private shoppingListService: ShoppingListService,
-              private recipeService: RecipeService) { }
   ngOnInit() {
     this.subscription = this.shoppingListService.startedEditing.subscribe(
       (index: number) => {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, OnDestroy} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnDestroy, inject } from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {RecipeService} from '../recipe.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -10,13 +10,14 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
+  private recipeService = inject(RecipeService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private authService = inject(AuthService);
+
   recipes: Recipe[] ;
   subscription: Subscription;
    onRecipeSelected = new Subject<Recipe>();
-  constructor(private recipeService: RecipeService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private authService: AuthService) { }
 
   ngOnInit() {
     this.subscription = this.recipeService.recipeChanged.subscribe(

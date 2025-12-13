@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RecipeService } from '../recipes/recipe.service';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '../../../node_modules/@angular/router';
@@ -9,7 +9,10 @@ selector : 'app-header',
   styleUrls : ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private recipeService: RecipeService, private authService: AuthService, private router: Router) {}
+  private recipeService = inject(RecipeService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   onSaveRecipes() {
     this.recipeService.saveRecipes().subscribe(
       (data: Response) => {console.log(data.json())},
