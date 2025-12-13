@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import {AppRoutingModule} from './app-routing.module';
-import { SharedModule } from './shared/shared-module';
-import { AuthModule } from './auth/auth-module';
-import { ShoppingListModule } from './shopping-list/shopping-list-module';
+
+
+
 
 @NgModule({
   declarations: [
@@ -20,11 +20,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list-module';
     BrowserModule,
     HttpModule,
     RecipesModule,
-    AppRoutingModule,
-    SharedModule,
-    AuthModule ,
-    ShoppingListModule            
-  ],
+    AppRoutingModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })
