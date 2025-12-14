@@ -8,8 +8,8 @@
   </div>
   <hr>
     <div class="row">
-      <div class="col-12 col-md-12" style="width: 100%">
-        @for (recipeEl of recipes; track recipeEl; let i = $index) {
+      <div class="col-12" style="width: 100%">
+        @for (recipeEl of recipes(); track recipeEl; let i = $index) {
           <app-recipe-item
           [recipe]="recipeEl" [index]="i"></app-recipe-item>
         }

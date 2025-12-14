@@ -1,8 +1,6 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import {Ingredient} from '../shared/ingredient.model';
-import {ShoppingListService} from './shopping-list.service';
-import {Subject, takeUntil} from 'rxjs';
+import { Component, computed, inject } from '@angular/core';
 import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,22 +8,13 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
   styleUrls: ['./shopping-list.component.css'],
   imports: [ShoppingEditComponent]
 })
-export class ShoppingListComponent implements OnInit , OnDestroy {
+export class ShoppingListComponent {
   private shoppingListService = inject(ShoppingListService);
-  private destroy$ = new Subject<void>();
-  ingredients: Ingredient[] =[];
 
-  ngOnInit() {
-    this.ingredients = this.shoppingListService.getIngridents();
-   this.shoppingListService.ingredientsChanged.pipe(takeUntil(this.destroy$)).subscribe(
-      (ingridents: Ingredient[]) => {
-        this.ingredients = ingridents; });
-  }
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.unsubscribe();
-  }
+  // Use computed signal directly
+  ingredients = computed(() => this.shoppingListService.ingredientsList());
+
   onEditItem(index: number) {
-    this.shoppingListService.startedEditing.next(index);
+    this.shoppingListService.setEditingIndex(index);
   }
 }
