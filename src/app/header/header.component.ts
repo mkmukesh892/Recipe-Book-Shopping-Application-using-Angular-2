@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { RecipeService } from '../recipes/recipe.service';
 
@@ -7,7 +7,7 @@ import { RecipeService } from '../recipes/recipe.service';
 selector : 'app-header',
   templateUrl : './header.component.html',
   styleUrls : ['./header.component.css'],
-  imports: []
+  imports: [RouterLink, RouterLinkActive]
 })
 export class HeaderComponent {
   readonly recipeService = inject(RecipeService);
