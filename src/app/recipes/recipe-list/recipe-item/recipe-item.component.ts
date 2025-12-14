@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../recipe.service';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -14,7 +14,5 @@ export class RecipeItemComponent  {
 
   @Input() recipe: Recipe;
   @Input() index: number;
-  /*onRecipeSelected() {
-    this.recipeService.recipeSelected.emit(this.recipe);
-  }*/
+
 }

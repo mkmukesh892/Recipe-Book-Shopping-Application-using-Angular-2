@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <div class="row">
     @if (authService.isAuthenticated()) {
-      <div class="col-xs-12 col-sm-10 col-md-8">
+      <div class="col-12 col-sm-10 col-md-8 mt-3">
         <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
       </div>
     }
   </div>
   <hr>
     <div class="row">
-      <div class="col-xs-12" style="width: 100%">
+      <div class="col-12 col-md-12" style="width: 100%">
         @for (recipeEl of recipes; track recipeEl; let i = $index) {
           <app-recipe-item
           [recipe]="recipeEl" [index]="i"></app-recipe-item>

@@ -8,5 +8,4 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class RecipeStartComponent {
   readonly authService = inject(AuthService);
-
 }

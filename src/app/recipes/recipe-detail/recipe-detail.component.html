@@ -4,40 +4,40 @@
       <br>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-              <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-responsive" style="max-width:200px; max-height: 200px ">
+            <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+              <img [src]="recipe?.imagePath" [alt]="recipe?.name" class="img-responsive" style="max-width:200px; max-height: 200px ">
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-              <h1>{{recipe.name}}</h1>
+            <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+              <h1>{{recipe?.name}}</h1>
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
               @if (authService.isAuthenticated()) {
-                <div class="btn-group" appDropdown >
-                  <button class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
+                <div class="btn-group dropdown" appDropdown>
+                  <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Manage Recipe <span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li><a (click)="onAddToShoppingList()" style="cursor: pointer">To Shopping List</a></li>
-                    <li><a style="cursor: pointer" (click)="onEditRecipe()">Edit Recipe</a></li>
-                    <li><a style="cursor: pointer" (click)="onDeleteRecipe()">Delete Recipe</a></li>
+                    <li><a class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer">To Shopping List</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer" (click)="onEditRecipe()">Edit Recipe</a></li>
+                    <li><a class="dropdown-item" style="cursor: pointer" (click)="onDeleteRecipe()">Delete Recipe</a></li>
                   </ul>
                 </div>
               }
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-              {{recipe.description}}
+            <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+              {{recipe?.description}}
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
               <ul class="list-group">
-                @for (ingredient of recipe.ingredients; track ingredient) {
+                @for (ingredient of recipe?.ingredients; track ingredient) {
                   <li class="list-group-item">
-                    {{ingredient.name}} - {{ingredient.amount}}
+                    {{ingredient?.name}} - {{ingredient?.amount}}
                   </li>
                 }
               </ul>

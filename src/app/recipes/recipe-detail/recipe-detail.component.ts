@@ -4,12 +4,13 @@ import { AuthService } from '../../auth/auth.service';
 import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { DropdownDirective } from "src/app/shared/dropdown.directive";
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css'],
-  imports: []
+  imports: [DropdownDirective]
 })
 export class RecipeDetailComponent implements OnInit {
   readonly recipeService = inject(RecipeService);
