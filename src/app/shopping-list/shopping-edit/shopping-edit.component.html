@@ -1,10 +1,10 @@
 <div class="container-fluid">
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12 col-md-12">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
       <div class="row">
-        <div class="col-sm-5 form-group">
-          <label for="name">Name</label>
+        <div class="col-sm-5 mb-3">
+          <label class="form-label" for="name">Name</label>
           <input 
           type="text"
           id="name" 
@@ -13,8 +13,8 @@
           ngModel
           required>
         </div>
-        <div class="col-sm-2 form-group">
-          <label for="amount">Amount</label>
+        <div class="col-sm-2 mb-3">
+          <label for="amount" class="form-label">Amount</label>
           <input 
           type="number" 
           id="amount" 
@@ -27,7 +27,7 @@
         </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-12 bd-example">
             <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{editMode? 'Update' : 'Add'}}</button>
             <button class="btn btn-danger" type="button" (click)="onDeleteItem()">Delete</button>
             <button class="btn btn-primary" type="button" (click)="onClearItem()">Clear</button>
