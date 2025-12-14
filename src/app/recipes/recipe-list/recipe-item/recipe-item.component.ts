@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../recipe.service';
 
@@ -7,7 +7,7 @@ import { RecipeService } from '../../recipe.service';
   selector: 'app-recipe-item',
   templateUrl: './recipe-item.component.html',
   styleUrls: ['./recipe-item.component.css'],
-  imports: [RouterLink]
+  imports: [RouterLink, RouterLinkActive]
 })
 export class RecipeItemComponent   {
   readonly recipeService = inject(RecipeService);
