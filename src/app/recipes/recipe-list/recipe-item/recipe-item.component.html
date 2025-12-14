@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <a
   [routerLink]="[index]"
   style="cursor: pointer"
-   class="list-group-item clearfix " 
+   class="list-group-item clearfix" 
    routerLinkActive="active" >
-  <div class="pull-left" >
-    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-    <p class="list-group-item-text">{{recipe.description}}</p>
+  <div class="float-start" >
+    <h4 class="list-group-item-heading">{{recipe().name}}</h4>
+    <p class="list-group-item-text">{{recipe().description}}</p>
   </div>
-    <span class="pull-right">
+    <span class="float-end">
         <img 
-        [src]="recipe.imagePath" 
-        alt="{{recipe.name}}" 
+        [src]="recipe().imagePath" 
+        alt="{{recipe().name}}" 
         class="img-responsive" 
         style="max-height: 50px; height: 50px; width: 50px">
       </span>
